@@ -1,14 +1,14 @@
 /* packages
 */
-package src.edu.csbsju.cs.Controllers;
+package edu.csbsju.cs.Controllers;
 
 /* imports
 */
 import java.io.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
-import src.edu.csbsju.cs.Entity.SavedSchools;
-import src.edu.csbsju.cs.Entity.University;
-import src.edu.csbsju.cs.Entity.Users;
+import edu.csbsju.cs.Entity.SavedSchools;
+import edu.csbsju.cs.Entity.University;
+import edu.csbsju.cs.Entity.Users;
 
 import java.util.*;
 
@@ -209,7 +209,6 @@ public class DataBaseController {
 	 *
 	 */
 	public void deleteSchool(University uni) {
-		boolean success = false;
 
 		ArrayList<University> uniE = this.getAllSchoolDetails();
 		for (University u : uniE) {
@@ -218,17 +217,8 @@ public class DataBaseController {
 					univDBlib.university_removeUniversityEmphasis(u.getName(), i);
 				}
 				univDBlib.university_deleteUniversity(uni.getName());
-				success = true;
 			}
 		}
-		if (success == true)
-		
-			System.out.println("University Successfully Deleted");
-		
-		
-		else if (success == false)
-			System.out.println("University Unsuccessfully Deleted");
-			
 	}
 
 	/**
@@ -340,68 +330,15 @@ public class DataBaseController {
 	}
 	public University viewSchoolDetails(String universityName) {
 		
-	boolean found = false;
-	String[][] allSchools1 = univDBlib.university_getUniversities();
-	ArrayList<University> allSchools2 =  new ArrayList<University>();
-	String[][] schoolEmp = univDBlib.university_getNamesWithEmphases();
-	int i = 0;
-			int a = 0;
-			ArrayList<String> emp = new ArrayList<String>();
-			while (a < schoolEmp.length) {
-				if (schoolEmp[a][0].equals(allSchools1[i][0])) {
-					emp.add(schoolEmp[a][1]);
-					a++;
-				} else {
-					a++;
-				}
-			}
-			University school = new University(allSchools1[i][0], allSchools1[i][1], allSchools1[i][2], allSchools1[i][3],
-					Integer.parseInt(allSchools1[i][4]), Double.parseDouble(allSchools1[i][5]),
-					Double.parseDouble(allSchools1[i][6]), Double.parseDouble(allSchools1[i][7]),
-					Double.parseDouble(allSchools1[i][8]), Double.parseDouble(allSchools1[i][9]),
-					Integer.parseInt(allSchools1[i][10]), Double.parseDouble(allSchools1[i][11]),
-					Double.parseDouble(allSchools1[i][12]), Integer.parseInt(allSchools1[i][13]),
-					Integer.parseInt(allSchools1[i][14]), Integer.parseInt(allSchools1[i][15]), emp);
-
-			allSchools2.add(school);
-			for (int x = 0; x<allSchools2.size(); x++)
-			
-			{
-			if(allSchools1[x][0].equals(universityName))
-			{
-			System.out.println(allSchools1[x][0] + " " + allSchools1[x][1]+ " " + allSchools1[x][2]+ " " +allSchools1[x][3]+ " " +
-					Integer.parseInt(allSchools1[x][4])+ " " + Double.parseDouble(allSchools1[x][5])+ " " +
-					Double.parseDouble(allSchools1[x][6])+ " " + Double.parseDouble(allSchools1[x][7])+ " " +
-					Double.parseDouble(allSchools1[x][8])+ " " + Double.parseDouble(allSchools1[x][9])+ " " +
-					Integer.parseInt(allSchools1[x][10])+ " " + Double.parseDouble(allSchools1[x][11])+ " " +
-					Double.parseDouble(allSchools1[x][12])+ " " + Integer.parseInt(allSchools1[x][13])+ " " +
-					Integer.parseInt(allSchools1[x][14])+ " " + Integer.parseInt(allSchools1[x][15]));
-			 University uni = allSchools2.get(x);
-			 found = true;
-			 return uni;
-		}
-		i++;
-	}
-			if(found == false)
-			{
-				throw new IllegalArgumentException("School not found");
-			}
-	return null;
-		/*ArrayList<University> list = getAllSchoolDetails();
-		boolean found = false;
-		for(int i = 0; i<list.size(); i++)
+		ArrayList<University> univ = getAllSchoolDetails();
+		for(int i = 0; i<univ.size(); i++)
 		{
-			if(list.get(i).equals(universityName))
+			if(univ.get(i).getName().equals(universityName))
 			{
-				list.get(i).print();
-				found = true;
-				return list.get(i);
+				return univ.get(i);
 			}
 		}
-		if(found == false)
-		throw new IllegalArgumentException("University: '" + universityName + "' was not found");
-		
-		return null;*/
+		throw new IllegalArgumentException("School not found!");
 	}
 
 	/**

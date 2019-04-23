@@ -1,10 +1,10 @@
 /*packages
 */
-package src.edu.csbsju.cs.Controllers;
+package edu.csbsju.cs.Controllers;
 
 /* imports
 */
-import src.edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Entity.*;
 import java.util.ArrayList;
 
 import javax.naming.NameNotFoundException;

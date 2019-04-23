@@ -2,12 +2,12 @@
  * packages
  */
 
-package src.edu.csbsju.cs.Controllers;
+package edu.csbsju.cs.Controllers;
 import java.util.ArrayList;
 
 import javax.naming.NameNotFoundException;
 
-import src.edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Entity.*;
 
 
 /**
@@ -124,6 +124,7 @@ else if(!(status == 'Y' || status == 'N'))
 	public void deleteSchool(University uni)
 	{
 		dbc.deleteSchool(uni);
+	
 	}
 	/*
 	* Allows the admin to edit an university in the database
@@ -140,26 +141,25 @@ else if(!(status == 'Y' || status == 'N'))
 		{
 			if(x.getName().equals(old))
 			{
-				University u = dbc.viewSchoolDetails(x.getName());
-				u.setName(name);
-				u.setState(state);
-				u.setLocation(location);
-				u.setControl(control);
-				u.setNumStudents(numStudents);
-				u.setFemales(females);
-				u.setSATV(SATV);
-				u.setSATM(SATM);
-				u.setExpenses(expenses);
-				u.setFinancialAid(financialAid);
-				u.setNumApplicants(numApplicants);
-				u.setAdmitted(admitted);
-				u.setEnrolled(enrolled);
-				u.setAcademicScale(academicScale);
-				u.setSocialScale(socialScale);
-				u.setqOLScale(qOLScale);
+				x.setName(name);
+				x.setState(state);
+				x.setLocation(location);
+				x.setControl(control);
+				x.setNumStudents(numStudents);
+				x.setFemales(females);
+				x.setSATV(SATV);
+				x.setSATM(SATM);
+				x.setExpenses(expenses);
+				x.setFinancialAid(financialAid);
+				x.setNumApplicants(numApplicants);
+				x.setAdmitted(admitted);
+				x.setEnrolled(enrolled);
+				x.setAcademicScale(academicScale);
+				x.setSocialScale(socialScale);
+				x.setqOLScale(qOLScale);
 		//University uni = new University(name, state, location, control, numStudents, females, SATV, SATM, expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOLScale, emp);
 	
-		 dbc.editSchool(u);
+		 dbc.editSchool(x);
 			}
 	}
 	}

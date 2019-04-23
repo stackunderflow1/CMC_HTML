@@ -1,12 +1,12 @@
 /**
  * packages
  */
-package src.edu.csbsju.cs.Controllers;
+package edu.csbsju.cs.Controllers;
 /**
  * imports
  */
 import java.util.ArrayList;
-import src.edu.csbsju.cs.Entity.University;
+import edu.csbsju.cs.Entity.University;
 
 /**
  * This class is the University controller that allows a user to access the database.
