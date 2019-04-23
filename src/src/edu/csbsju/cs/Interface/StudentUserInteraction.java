@@ -1,10 +1,10 @@
 /*packages
 */
-package src.edu.csbsju.cs.Interface;
+package edu.csbsju.cs.Interface;
 /*imports
 */
-import src.edu.csbsju.cs.Controllers.*;
-import src.edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Controllers.*;
+import edu.csbsju.cs.Entity.*;
 import java.util.*;
 
 import javax.naming.NameNotFoundException;
@@ -23,9 +23,10 @@ public class StudentUserInteraction {
 	*@returns the a university in the database
 	*/
 	private StudentFunctionalityController sfc = new StudentFunctionalityController();
-  public University viewUniversity(University uni) throws NameNotFoundException
+	
+  public University viewUniversity(String uni) throws NameNotFoundException
   {
-    return sfc.viewSchoolDetails(uni.getName());
+    return sfc.viewSchoolDetails(uni);
   }
   /**
 	* Displays all the saved schools that the user saved in the database
@@ -73,11 +74,6 @@ public class StudentUserInteraction {
   public void removeSavedSchool(Users user, String school)
   {
      sfc.removeSavedSchool(user, school);
-  }
-  
-  public University viewSchoolDetails(String universityName) throws NameNotFoundException 
-  {
-	   return sfc.viewSchoolDetails(universityName);
   }
   
 

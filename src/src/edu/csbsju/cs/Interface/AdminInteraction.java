@@ -1,7 +1,7 @@
 /**
  * packages
  */
-package src.edu.csbsju.cs.Interface;
+package edu.csbsju.cs.Interface;
 /**
  * imports
  */
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 import javax.naming.NameNotFoundException;
 
-import src.edu.csbsju.cs.Entity.*;
-import src.edu.csbsju.cs.Controllers.*;
+import edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Controllers.*;
 
 /**
 * Admin Interaction Class
@@ -73,7 +73,7 @@ public class AdminInteraction {
 			 int numApplicants, double admitted, double enrolled, int academicScale, int socialScale, 
 			 int qOLScale, ArrayList<String> emphasess)
 	{
-		University uni = new University( name,  state, location,  control,  numStudents, 
+		University uni = new University(name,  state, location,  control,  numStudents, 
 				  females,  SATV,  SATM,  expenses,  financialAid, 
 				  numApplicants,  admitted, enrolled, academicScale, socialScale, 
 				  qOLScale, emphasess);
