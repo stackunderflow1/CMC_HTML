@@ -1,9 +1,9 @@
-package src.edu.csbsju.cs.Drivers;
+package edu.csbsju.cs.Drivers;
 
 
-import src.edu.csbsju.cs.Controllers.*;
-import src.edu.csbsju.cs.Entity.*;
-import src.edu.csbsju.cs.Interface.*;
+import edu.csbsju.cs.Controllers.*;
+import edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Interface.*;
 import java.io.*;
 import java.util.*;
 
@@ -21,10 +21,10 @@ public class CMCDriver {
 		Users user = ai.getUser("juser");
 		DataBaseController dbc = new DataBaseController();
 		
-		
+		ArrayList<University> univ = dbc.getAllSchoolDetails();
 		ArrayList<String> emp = new ArrayList<String>();
 		emp.add("LIBERAL-ARTS");
-		//emp.add("COMPUTER-SCIENCE");
+		emp.add("COMPUTER-SCIENCE");
 		
 		
 		System.out.println("********** LOG ON **********\n");
@@ -89,7 +89,8 @@ public class CMCDriver {
 		
 		
 		System.out.println("\n\n\n********** VIEW SCHOOL **********\n");
-		University uni =  sui.viewSchoolDetails("ABILENE CHRISTIAN UNIVERSITY");
+		University uni = sui.viewUniversity("ABILENE CHRISTIAN UNIVERSITY");
+		System.out.println(uni.getName());
 		ArrayList<SavedSchools> save = sui.viewAllSavedUniversitys(user);
 		
 		System.out.println("\n\n********** VIEW SAVED SCHOOLS **********\n");
@@ -187,7 +188,7 @@ public class CMCDriver {
 			System.out.println("\n"+i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getType() + "," + i.getStatus());
 		}
 		
-		System.out.println("\n\n********** DEACTIVATE USER **********");
+		System.out.println("\n\n********** CHANGE USER STATUS **********");
 		ai.changeStatus(dummy1.getUsername());
 		allUsers = ai.getAllUsers();
 		for(Users i: allUsers)
@@ -206,50 +207,55 @@ public class CMCDriver {
 		}
 		
 		System.out.println("\n\n********** ADD UNIVERSITY **********\n");
-		ai.addUniversity("ANATOL", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
+		//ai.addUniversity("ANATOL", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
 		//ai.addUniversity("ABILENE CHRISTIAN UNIVERSITY", "TEXAS", "SUBURBAN", "PRIVATE", 10000, 50.0, -1, -1, 12088.0, 70, 4000, 90.0, 80.0, 2, 3, 3, emp);
-		ArrayList<University> univ = dbc.getAllSchoolDetails();
+		univ = dbc.getAllSchoolDetails();
 		System.out.println("*** Newly Added University***\n");
 		University x1 = null;
-		for(University i: univ)
+		for(int i = 0; i<univ.size(); i++)
 		{
-			if (i.getName().equals("ANATOL"))
-					{
-			System.out.println(i.print());
-			x1 = i;
+			if (univ.get(i).getName().equals("ANATOL"))
+			{
+			System.out.println(univ.get(i).print());
+			x1 = univ.get(i);
+			
 					}
 		}
-		//ai.deleteSchool(x1);
+		ai.deleteSchool(x1);
 		
-		System.out.println("\n\n********** ADD UNIVERSITY WITH SAME NAME **********\n");
+		/*System.out.println("\n\n********** ADD UNIVERSITY WITH SAME NAME **********\n");
 		univ = dbc.getAllSchoolDetails();
-		
-		
 		ai.addUniversity("ANATOL", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
 		
 		
 		System.out.println("\n\n********** EDIT UNIVERSITY **********\n");
-		ai.editSchool(x1.getName(),"ANATOL2", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
 		univ = dbc.getAllSchoolDetails();
-		System.out.println("*** Newly Edited University***\n");
+		ai.editSchool(x1.getName(),"ANATOL2", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
+					
+		univ = dbc.getAllSchoolDetails();
+		System.out.println("\n*** Newly Edited University***\n");
 		for(University i: univ)
 		{
-			if (i.getName().equals("ANATOL2"))
+			if (i.getName().equals("ANATOL1"))
 					{
 			System.out.println(i.print());
 					}
 		}
 		
 		System.out.println("\n\n********** DELETE UNIVERSITY **********\n");
+		univ = dbc.getAllSchoolDetails();
 		ai.deleteSchool(x1);
+		univ = dbc.getAllSchoolDetails();
 		for(University i: univ)
 		{
-			if (i.getName().equals(x1.getName()) || i.getName().equals("ANATOL1"))
+			if (i.getName().equals(x1.getName()) || i.getName().equals("ANATOL"))
 					{
 			System.out.println(i.print());
 			ai.deleteSchool(i);
 					}
+		}*/
 		}
+		
 		
 		
 		
@@ -346,5 +352,6 @@ public class CMCDriver {
 		}
 		*/
 	}
+
 	
-}
+
